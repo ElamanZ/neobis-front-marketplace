@@ -42,6 +42,13 @@
   font-size: 22px;
   width: 150px;
 }
+
+.modalPinCode {
+  h4{
+    margin-bottom: 10px;
+  }
+}
+
 .addNumBtnModal {
   border: none;
   outline: none;
@@ -57,5 +64,14 @@
     background-color: #C0C0C0;
     cursor: not-allowed;
   }
+}
+.modalBlockBtn {
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 24px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #212121;
 }
 

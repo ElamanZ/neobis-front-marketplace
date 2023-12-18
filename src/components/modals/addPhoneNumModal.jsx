@@ -2,19 +2,33 @@ import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import styles from '../modals/modals.module.scss';
-import addPhonNumLogo from '../../assets/img/Profile/ConfirmPhoneNumberIcon.svg';
+import addPhoneNumLogo from '../../assets/img/Profile/ConfirmPhoneNumberIcon.svg';
 import classNames from 'classnames';
+import PinCode from "../pinCode/pinCode.jsx";
 
 function AddPhoneNumModal(props) {
     const [open, setOpen] = useState(false);
-    const [phoneNumberModal, setPhoneNumberModal] = useState(0);
+    const [phoneNumberModal, setPhoneNumberModal] = useState('');
+    const [openSecondModal, setOpenSecondModal] = useState(false);
+    const handleCodeComplete = (code) => {
+        return console.log('Введенный код:', code);
+
+    };
 
     const handleAddNumber = () => {
         setOpen(true);
     };
 
+    const handleOpenApproveModal = () => {
+        setOpenSecondModal(true);
+        setOpen(false)
+    };
+
     const handleClose = () => {
         setOpen(false);
+    };
+    const handleCloseApproveModal = () => {
+        setOpenSecondModal(false);
     };
 
     const handleInputChange = (event) => {
@@ -81,18 +95,44 @@ function AddPhoneNumModal(props) {
                 <Box sx={style}>
                     <div className={styles.modalBlock}>
                         <h3>Добавить номер телефона</h3>
-                        <img src={addPhonNumLogo} alt="addPhonNumLogo" />
+                        <img src={addPhoneNumLogo} alt="addPhoneNumLogo" />
                         <h4>Введите номер телефона</h4>
                         <p>Мы отправим вам СМС с кодом подтверждения</p>
                         <input
-                            type="text"
+                            type="tel"
                             placeholder="0(000) 000 0000"
                             value={phoneNumberModal}
                             onChange={handleInputChange}
                             className={styles.modalPhoneNumInput}
                         />
 
-                        <button className={buttonClasses} disabled={isDisabled}>
+                        <button onClick={handleOpenApproveModal} className={buttonClasses} disabled={isDisabled}>
+                            Далее
+                        </button>
+                    </div>
+                </Box>
+            </Modal>
+
+
+            {/*sendMessageModal*/}
+            <Modal
+                open={openSecondModal}
+                onClose={handleCloseApproveModal}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box sx={style}>
+                    <div className={styles.modalBlock}>
+                        <button className={styles.modalBlockBtn} onClick={handleAddNumber}>Изменить номер телефона</button>
+                        <img src={addPhoneNumLogo} alt="addPhoneNumLogo" />
+                        <h4>Введите номер телефона</h4>
+                        <p>Мы отправим вам СМС с кодом подтверждения</p>
+                        <form className={styles.modalPinCode}>
+                            <h4>Введите код из СМС:</h4>
+                            <PinCode onComplete={handleCodeComplete} />
+                        </form>
+
+                        <button onClick={handleCodeComplete} className={buttonClasses} disabled={isDisabled}>
                             Далее
                         </button>
                     </div>

@@ -67,7 +67,7 @@ const ProfilePage = () => {
 
 
             <div className={styles.profileContent}>
-                {activeTab === 'likedItems' && <Profile/>}
+                {activeTab === 'likedItems' && <div>likedItems</div>}
                 {activeTab === 'myItems' && <div>Содержимое для моих товаров</div>}
                 {activeTab === 'logout' && <div>Выход</div>}
                 {activeTab === 'profile' && <Profile/>}

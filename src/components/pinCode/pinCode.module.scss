@@ -1,0 +1,26 @@
+// InputCode.module.scss
+.inputCode {
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+
+  .inputField {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 1.2rem;
+    margin-right: 5px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: blue; // Цвет рамки при фокусе
+      box-shadow: 0 0 3px rgba(0, 0, 255, 0.5); // Тень при фокусе
+    }
+  }
+}
