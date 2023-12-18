@@ -1,0 +1,161 @@
+.block {
+  display: flex;
+  width: 100%;
+}
+.block__logo {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background: url("../../assets/img/Register&Login/backgroundImage2.png") center/cover no-repeat;
+
+
+  min-height: 770px;
+  height: 100%;
+
+  img {
+    width: 200px;
+    height: 200px;
+  }
+}
+.block__content_login {
+  justify-content: center;
+}
+.block__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.block__input {
+  border: none;
+  outline: none;
+  border-bottom: solid 1px #C0C0C0;
+  font-size: 18px;
+  width: 335px;
+  height: 35px;
+  margin-bottom: 51px;
+}
+.password {
+  padding: 0 25px 0 0;
+}
+.block__btnSubmit {
+  width: 335px;
+  height: 44px;
+  border-radius: 80px;
+  padding: 10px;
+  background-color: #5458EA;
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 18px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 30px 0 160px;
+  align-items: center;
+  &:disabled {
+    background-color: #C0C0C0;
+    cursor: not-allowed;
+  }
+}
+
+.block__content_items {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+.block__content_items_login {
+
+}
+.block__btnLink {
+  font-size: 18px;
+  color: #5458EA;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.block__password{
+  position: relative;
+}
+.inputPasswordImg {
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  padding: 10px 0 0;
+  min-width: 20px;
+}
+.block__header {
+  margin: 29px 0 160px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: space-around;
+
+  h3 {
+    width: 335px;
+    align-items: center;
+    color: #494949;
+  }
+
+}
+.block__header_margin {
+  margin: 29px 0 60px;
+}
+.backBtn {
+  width: 100px;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  color: #000000;
+  font-weight: 800;
+  text-align: center;
+}
+
+.backBtn_img {
+  display: flex;
+  width: 44px;
+  height: 28px;
+  padding: 7px;
+  border-radius: 50px;
+  background-color: rgba(192, 192, 192, 0.2);
+  margin-right: 12px;
+}
+.pustyshka {
+  width: 100px;
+}
+.block__iconEye {
+  width: 100px;
+}
+.iconEye_Password {
+  cursor: pointer;
+  right: 0;
+  padding: 10px 0 0;
+  min-width: 20px;
+}
+
+.block__validPassword {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  max-width: 343px;
+
+  .description_valid {
+    color: #C0C0C0;
+    font-size: 18px;
+    margin: 10px 0 28px;
+  }
+  h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+}
+
+.block__input_passwordRecovery {
+  font-size: 24px;
+  font-weight: 700;
+}
