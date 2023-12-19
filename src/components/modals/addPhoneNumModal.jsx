@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import styles from '../modals/modals.module.scss';
@@ -10,10 +10,37 @@ function AddPhoneNumModal(props) {
     const [open, setOpen] = useState(false);
     const [phoneNumberModal, setPhoneNumberModal] = useState('');
     const [openSecondModal, setOpenSecondModal] = useState(false);
+
+    const [timer, setTimer] = useState(60);
+    const [startTimer, setStartTimer] = useState(false);
+
     const handleCodeComplete = (code) => {
         return console.log('Введенный код:', code);
-
     };
+
+    useEffect(() => {
+        let interval;
+        if (startTimer && timer > 0) {
+            interval = setInterval(() => {
+                setTimer((prevTimer) => {
+                    if (prevTimer > 0) {
+                        return prevTimer - 1;
+                    } else {
+                        clearInterval(interval);
+                        return prevTimer;
+                    }
+                });
+            }, 1000);
+        } else if (timer === 0) {
+            clearInterval(interval);
+        }
+
+        return () => {
+            clearInterval(interval);
+        };
+    }, [startTimer, timer]);
+
+    console.log(timer);
 
     const handleAddNumber = () => {
         setOpen(true);
@@ -21,12 +48,13 @@ function AddPhoneNumModal(props) {
 
     const handleOpenApproveModal = () => {
         setOpenSecondModal(true);
-        setOpen(false)
+        setStartTimer(true);
     };
 
     const handleClose = () => {
         setOpen(false);
     };
+
     const handleCloseApproveModal = () => {
         setOpenSecondModal(false);
     };
@@ -52,12 +80,12 @@ function AddPhoneNumModal(props) {
             setPhoneNumberModal(formattedValue);
         }
     };
+
     const isDisabled = phoneNumberModal.length !== 14;
 
     const buttonClasses = classNames(styles.addNumBtnModal, {
         [styles.isDisabled]: isDisabled,
     });
-
 
     const style = {
         position: 'absolute',
@@ -75,6 +103,10 @@ function AddPhoneNumModal(props) {
         justifyContent: 'center',
     };
 
+    const handleResendCode = () => {
+        setTimer(60);
+        setStartTimer(true);
+    };
     return (
         <>
             <div className={styles.profile__number}>
@@ -113,8 +145,6 @@ function AddPhoneNumModal(props) {
                 </Box>
             </Modal>
 
-
-            {/*sendMessageModal*/}
             <Modal
                 open={openSecondModal}
                 onClose={handleCloseApproveModal}
@@ -123,18 +153,23 @@ function AddPhoneNumModal(props) {
             >
                 <Box sx={style}>
                     <div className={styles.modalBlock}>
-                        <button className={styles.modalBlockBtn} onClick={handleAddNumber}>Изменить номер телефона</button>
+                        <h3>Добавить номер телефона</h3>
                         <img src={addPhoneNumLogo} alt="addPhoneNumLogo" />
                         <h4>Введите номер телефона</h4>
                         <p>Мы отправим вам СМС с кодом подтверждения</p>
                         <form className={styles.modalPinCode}>
                             <h4>Введите код из СМС:</h4>
                             <PinCode onComplete={handleCodeComplete} />
+                            <div className={styles.modalPinCodeTimer}>
+                                {timer > 0 ? (
+                                    <p>Повторный запрос через: {timer}с</p>
+                                ) : (
+                                    timer === 0 && (
+                                    <button className={styles.btn_timer} onClick={handleResendCode}>Отправить код еще раз</button>
+                                    )
+                                )}
+                            </div>
                         </form>
-
-                        <button onClick={handleCodeComplete} className={buttonClasses} disabled={isDisabled}>
-                            Далее
-                        </button>
                     </div>
                 </Box>
             </Modal>

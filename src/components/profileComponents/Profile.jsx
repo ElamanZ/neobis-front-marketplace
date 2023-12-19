@@ -29,15 +29,6 @@ function Profile(props) {
         }
     };
 
-    // const [phoneNumber, setPhoneNumber] = useState('');
-    //
-    // const handleAddNumber = () => {
-    //     // Здесь можно добавить логику для добавления номера телефона
-    //     // Например, открыть модальное окно или другой способ ввода номера
-    //     // В данном примере установим номер по умолчанию
-    //     setPhoneNumber('0(000) 000 000');
-    // };
-
 
     const inputClasses = classNames(styles.profile__user_data,styles.profile__user_phone);
 
@@ -72,12 +63,6 @@ function Profile(props) {
                     <input type="date" placeholder='Дата рождения'/>
                 </div>
                 <div className={inputClasses}>
-                    {/*<div className={styles.phoneInput}>*/}
-                    {/*    <button className={styles.addNumButton} onClick={handleAddNumber}>*/}
-                    {/*        Добавить номер*/}
-                    {/*    </button>*/}
-                    {/*    <span>{phoneNumber || '0(000) 000 000'}</span>*/}
-                    {/*</div>*/}
                     <AddPhoneNumModal/>
                     <input type="text" value={userEmail}/>
                 </div>
