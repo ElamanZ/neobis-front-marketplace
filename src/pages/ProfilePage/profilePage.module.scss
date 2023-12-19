@@ -10,7 +10,7 @@
   padding: 18px 42px;
   cursor: pointer;
   &.active {
-    background: linear-gradient(#f5f5f5, #abc6e8);
+    background: linear-gradient(#6d8fff, #dbe7fd);
   }
   &:hover {
     background-color: #e9eaec;
@@ -19,7 +19,6 @@
 .userInfo {
   margin-left: 12px;
   color: #494949;
-
   h3 {
     font-size: 18px;
   }
