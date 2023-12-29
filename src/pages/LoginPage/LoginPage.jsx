@@ -3,7 +3,7 @@ import styles from '../LoginPage/login&register.module.scss'
 import logo from '../../assets/img/Register&Login/shopping-cart.svg'
 import {useForm} from "react-hook-form";
 import classNames from 'classnames';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {ToastContainer, toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 import eyeIcon from "../../assets/img/Register&Login/passwordEyeOpen.svg";
@@ -30,6 +30,7 @@ function LoginPage(props) {
         username: username,
         password: password,
     };
+    const navigate = useNavigate()
 
     const handleChange = (e) => {
         setPassword(e.target.value);
@@ -38,6 +39,7 @@ function LoginPage(props) {
     const {register, handleSubmit, formState: { errors, isValid } } = useForm()
     const onSubmit = (data) => {
         alert(`Твое имя ${data.name} пароль ${data.password}`)
+        navigate('/main')
     }
     console.log(errors)
 

@@ -3,7 +3,7 @@ import styles from '../LoginPage/login&register.module.scss';
 import logo from '../../assets/img/Register&Login/shopping-cart.svg';
 import { useForm } from 'react-hook-form';
 import classNames from 'classnames';
-import { Link } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import backIcon from '../../assets/img/ArrowBackBtn.svg';
 import eyeIcon from '../../assets/img/Register&Login/passwordEyeOpen.svg';
@@ -17,6 +17,8 @@ function PasswordRecoveryPage(props) {
     const [showConfirmField, setShowConfirmField] = useState(false);
     const [isConfirmPassword, setIsConfirmPassword] = useState(false);
 
+
+    const navigate = useNavigate()
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
@@ -25,6 +27,7 @@ function PasswordRecoveryPage(props) {
     const { register, handleSubmit, formState: { errors, isValid } } = useForm();
     const onSubmit = (data) => {
         console.log(data.password, data.passwordConfirm);
+        navigate('/main')
     };
 
     const isValidPasswordLength = password.length >= 8;

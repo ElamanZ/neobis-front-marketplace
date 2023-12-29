@@ -3,17 +3,18 @@ import styles from '../LoginPage/login&register.module.scss'
 import logo from '../../assets/img/Register&Login/shopping-cart.svg'
 import {useForm} from "react-hook-form";
 import classNames from 'classnames';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {ToastContainer, toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 import backIcon from '../../assets/img/ArrowBackBtn.svg'
 function RegisterPage(props) {
 
 
-
+    const navigate = useNavigate()
     const {register, handleSubmit, formState: { errors, isValid } } = useForm()
     const onSubmit = (data) => {
         alert(`Твое имя ${data.name} email ${data.email}`)
+        navigate('/password-recovery')
     }
     console.log(errors)
 
